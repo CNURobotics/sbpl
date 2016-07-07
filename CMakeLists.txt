@@ -9,6 +9,16 @@ set(SBPL_VERSION ${SBPL_MAJOR_VERSION}.${SBPL_MINOR_VERSION}.${SBPL_PATCH_VERSIO
 
 set(CMAKE_BUILD_TYPE Release)
 
+#Enable ROS messages
+find_package( roscpp)
+if (roscpp_FOUND)
+  message(STATUS "Using ROS messaging")
+  include_directories(${roscpp_INCLUDE_DIRS})
+  add_definitions( -DROS )
+else()
+  message(STATUS "Using default SBPL messaging ")
+endif (roscpp_FOUND)
+
 include_directories(src/include)
 
 add_library(sbpl SHARED
@@ -33,6 +43,10 @@ add_library(sbpl SHARED
   src/utils/2Dgridsearch.cpp
   src/utils/config.cpp
   )
+
+if (roscpp_FOUND)
+  target_link_libraries (sbpl ${roscpp_LIBRARIES})
+endif(roscpp_FOUND)
 
 set(SBPL_INCLUDE_DIR "${CMAKE_INSTALL_PREFIX}/include")
 set(SBPL_LIB_DIR "${CMAKE_INSTALL_PREFIX}/lib")
