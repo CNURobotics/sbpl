@@ -92,7 +92,8 @@ struct SBPL_xytheta_mprimitive
 {
     int motprimID;
     unsigned char starttheta_c;
-    int additionalactioncostmult;
+    int base_action_cost; // Minimum defined cost for taking this action
+    int action_cost_mult; // >=1 additional cost factor to apply beyond base and grid cost
     sbpl_xy_theta_cell_t endcell;
     double turning_radius;
     //intermptV start at 0,0,starttheta and end at endcell in continuous
