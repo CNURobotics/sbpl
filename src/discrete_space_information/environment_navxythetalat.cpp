@@ -1075,8 +1075,8 @@ void EnvironmentNAVXYTHETALATTICE::PrecomputeActionswithBaseMotionPrimitive(
             //         * EnvNAVXYTHETALATCfg.timetoturn45degsinplace_secs
             //         * fabs(computeMinUnsignedAngleDiff(mp_endtheta_rad, 0)) / (PI_CONST / 4.0));
 
-            EnvNAVXYTHETALATCfg.ActionsV[tind][aind].cost = motionprimitiveV->at(mind).base_action_cost*
-                                                                    motionprimitiveV->at(mind).action_cost_mult;
+            EnvNAVXYTHETALATCfg.ActionsV[tind][aind].cost = motionprimitiveV->at(aind).base_action_cost*
+                                                                    motionprimitiveV->at(aind).action_cost_mult;
 
             //compute and store interm points as well as intersecting cells
             EnvNAVXYTHETALATCfg.ActionsV[tind][aind].intersectingcellsV.clear();
