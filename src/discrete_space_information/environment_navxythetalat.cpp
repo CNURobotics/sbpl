@@ -790,7 +790,7 @@ bool EnvironmentNAVXYTHETALATTICE::ReadMotionPrimitives(FILE* fMotPrims)
     if (fscanf(fMotPrims, "%s", sTemp) == 0) {
         return false;
     }
-    SBPL_INFO("sTemp: %s\n", sTemp);
+
     if (strncmp(sTemp, "min_turning_radius_m:", 21) == 0) {
         bUseNonUniformAngles = true;
     }
